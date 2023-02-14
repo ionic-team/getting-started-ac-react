@@ -1,0 +1,7 @@
+{
+  "name": "getting-started-ac-react",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
