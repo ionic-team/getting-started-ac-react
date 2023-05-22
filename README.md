@@ -33,7 +33,9 @@ const config: CapacitorConfig = {
   appId: 'io.ionic.gettingstartedacreact',
   appName: 'getting-started-ac-react',
   webDir: 'build',
-  bundledWebRuntime: false,
+  server: {
+    androidScheme: 'https',
+  },
 };
 
 export default config;
@@ -61,7 +63,7 @@ Finally, in order to ensure that a `cap sync` is run with each build, add it to 
 
 ```json
 "scripts": {
-  "build": "react-scripts build && cap sync",
+  "build": "tsc && vite build && cap sync",
   ...
 },
 ```
@@ -150,11 +152,11 @@ const options: ProviderOptions = {
 };
 ```
 
-The web redirect for development is on port `8100`. React uses port `3000` by default, so we will need to make a minor change to our `package.json` file as well:
+The web redirect for development is on port `8100`. Vite uses port `5173` by default, so we will need to make a minor change to our `package.json` file as well:
 
 ```json
 "scripts": {
-    "start": "export PORT=8100 && react-scripts start",
+    "dev": "vite --port=8100",
     ...
 },
 ```
