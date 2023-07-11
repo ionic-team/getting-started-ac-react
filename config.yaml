@@ -1,0 +1,23 @@
+vars:
+  AUTH_URL_SCHEME:
+    default: 'msauth'
+
+platforms:
+  android:
+    gradle:
+      - file: app/build.gradle
+        target:
+          android:
+            defaultConfig:
+        insertType: 'variable'
+        insert:
+          - manifestPlaceholders: "['AUTH_URL_SCHEME': '$AUTH_URL_SCHEME']"
+  ios:
+    targets:
+      App:
+        plist:
+          replace: true
+          entries:
+            - CFBundleURLTypes:
+                - CFBundleURLSchemes:
+                    - $AUTH_URL_SCHEME
